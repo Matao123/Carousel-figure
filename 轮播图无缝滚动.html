@@ -1,140 +1,140 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style type="text/css">
-		*{margin: 0;padding: 0;}
-		li{
-			list-style: none;
-		}
-		.clear{
-			clear: both;
-		}
-		.wrap{
-			width: 1000px;
-			margin: 50px auto;
-			position: relative;
-			overflow: hidden;
-			height: 409px;
-		}
-		.wrap ul{
-			width: 10000px;
-		}
-		.wrap li{
-			float: left;
-			height: 409px;
-		}
-		#aryleft,#aryright{
-			position: absolute;
-			top: 45%;
-			cursor: pointer;
-			opacity: .7;
-			transition:all .5s;
-		}
-		#aryleft:hover,#aryright:hover{
-			opacity: 1;
-			transform:scale(1.1);
-		}
-		#aryleft{
-			left: 20px;
-		}
-		#aryright{
-			right: 20px;
-		}
-		.list{
-			position: absolute;
-			bottom: 20px;
-			left: 40%;
-		}
-		.list span{
-			display: block;
-			float: left;
-			margin-right: 8px;
-			width: 16px;
-			height: 16px;
-			border-radius: 8px;
-			background-color: #fff;
-			font-size: 0;
-			cursor: pointer;
-		}
-		.list .flous{
-			background-color: #f12abc;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    *{margin: 0;padding: 0;}
+    li{
+      list-style: none;
+    }
+    .clear{
+      clear: both;
+    }
+    .wrap{
+      width: 1000px;
+      margin: 50px auto;
+      position: relative;
+      overflow: hidden;
+      height: 409px;
+    }
+    .wrap ul{
+      width: 10000px;
+    }
+    .wrap li{
+      float: left;
+      height: 409px;
+    }
+    #aryleft,#aryright{
+      position: absolute;
+      top: 45%;
+      cursor: pointer;
+      opacity: .7;
+      transition:all .5s;
+    }
+    #aryleft:hover,#aryright:hover{
+      opacity: 1;
+      transform:scale(1.1);
+    }
+    #aryleft{
+      left: 20px;
+    }
+    #aryright{
+      right: 20px;
+    }
+    .list{
+      position: absolute;
+      bottom: 20px;
+      left: 40%;
+    }
+    .list span{
+      display: block;
+      float: left;
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      background-color: #fff;
+      font-size: 0;
+      cursor: pointer;
+    }
+    .list .flous{
+      background-color: #f12abc;
+    }
+  </style>
 </head>
 <body>
-	<div class="wrap">
-		<ul id="ul" style="margin-left:0;">
-			<li><img src="img/timg (1).jpg"></li>
-			<li><img src="img/timg (2).jpg"></li>
-			<li><img src="img/timg (3).jpg"></li>
-			<li><img src="img/timg (4).jpg"></li>
-			<li><img src="img/timg (5).jpg"></li>
-			<li><img src="img/timg (6).jpg"></li>
-			<li><img src="img/timg (7).jpg"></li>
+  <div class="wrap">
+    <ul id="ul" style="margin-left:0;">
+      <li><img src="img/timg (1).jpg"></li>
+      <li><img src="img/timg (2).jpg"></li>
+      <li><img src="img/timg (3).jpg"></li>
+      <li><img src="img/timg (4).jpg"></li>
+      <li><img src="img/timg (5).jpg"></li>
+      <li><img src="img/timg (6).jpg"></li>
+      <li><img src="img/timg (7).jpg"></li>
       <li><img src="img/timg (8).jpg"></li>
-		</ul>
-		<img id="aryleft" src="img/l.png">
-		<img id="aryright" src="img/r.png">
-		<div class="list">
-		</div>
-	</div>
-	<script>
-		var aryright = document.getElementById("aryright")
-		var aryleft = document.getElementById("aryleft")
-		var imgList = document.getElementsByTagName("li")
-		var list = document.getElementsByClassName("list")[0]
-		var wrap = document.getElementsByClassName("wrap")[0]
-		var ul = document.getElementById("ul")
-		var count  = imgList.length;
-		var n = 0 // 当前张数
-		var m = 0 // 当前张数
-		var isVirtualHas = false;  // 
+    </ul>
+    <img id="aryleft" src="img/l.png">
+    <img id="aryright" src="img/r.png">
+    <div class="list">
+    </div>
+  </div>
+  <script>
+    var aryright = document.getElementById("aryright")
+    var aryleft = document.getElementById("aryleft")
+    var imgList = document.getElementsByTagName("li")
+    var list = document.getElementsByClassName("list")[0]
+    var wrap = document.getElementsByClassName("wrap")[0]
+    var ul = document.getElementById("ul")
+    var count  = imgList.length;
+    var n = 0 // 当前张数
+    var m = 0 // 当前张数
+    var isVirtualHas = false;  // 
     var isAnimationHas = false;
-   	// 向右点击
+    // 向右点击
     aryright.onclick = function(){
-    	if(!isAnimationHas){
-      	toNext()
-    	}
+      if(!isAnimationHas){
+        toNext()
+      }
     }
     // 向右切换图片的函数
-		function toNext(){
-			n++
-    	if(n == count){
-    		// 克隆一张第一张的副本
-    		newli = imgList[0].cloneNode(true)
-				ul.appendChild(newli)
-				m = 0
-    	}
-    	else{
-    		m++
-    	}
-			navType()
+    function toNext(){
+      n++
+      if(n == count){
+        // 克隆一张第一张的副本
+        newli = imgList[0].cloneNode(true)
+        ul.appendChild(newli)
+        m = 0
+      }
+      else{
+        m++
+      }
+      navType()
       var t = setInterval(function(){
         isAnimationHas = true
         // 移动的位移
         var ml = parseInt(ul.style.marginLeft);
         // 要移动的总距离
-       	var far=-(n*1000)
+        var far=-(n*1000)
         if(ml !== far){
-         	ul.style.marginLeft = ml + Math.floor((far-ml)/10) + "px"
-       	}
-       	// 当动画执行完毕后
-      	if(ml == far){	
-					clearInterval(t)
-					isAnimationHas = false
-					// 判断该动画是否为向后箭头的障眼法情况
-					if(n == count){
-						// ul瞬间到达真实的第一张
-          	ul.style.marginLeft = 0
-          	// 移除克隆的li
+          ul.style.marginLeft = ml + Math.floor((far-ml)/10) + "px"
+        }
+        // 当动画执行完毕后
+        if(ml == far){  
+          clearInterval(t)
+          isAnimationHas = false
+          // 判断该动画是否为向后箭头的障眼法情况
+          if(n == count){
+            // ul瞬间到达真实的第一张
+            ul.style.marginLeft = 0
+            // 移除克隆的li
             ul.removeChild(newli)
             // 将n校准到正确位置
-						n = 0
-      		}
-      	}
-			},16)
+            n = 0
+          }
+        }
+      },16)
     }
     // 向左切换图片的函数
     function toLast(){
@@ -154,33 +154,33 @@
       }
       navType()
       var t = setInterval(function(){
-      	isAnimationHas = true
+        isAnimationHas = true
         var ml = parseInt(ul.style.marginLeft)
         var far=-(n*1000)
         if(ml !== far){
-        	ul.style.marginLeft = ml+ Math.ceil((far-ml)/10) + "px"
+          ul.style.marginLeft = ml+ Math.ceil((far-ml)/10) + "px"
         }
         // 当动画执行完毕后
         else{
-        	clearInterval(t)
-        	isAnimationHas = false
+          clearInterval(t)
+          isAnimationHas = false
           if(isVirtualHas){
             // ul瞬间到达真实的第一张
             ul.style.marginLeft = (count-1)*(-1000)+"px"
-          	// 移除克隆的li
-          	ul.removeChild(newli)
-          	// 校准n的准确位置
-          	n = count-1
-          	isVirtualHas = false
-      		}
-      	}
+            // 移除克隆的li
+            ul.removeChild(newli)
+            // 校准n的准确位置
+            n = count-1
+            isVirtualHas = false
+          }
+        }
       },16)
     }
     // 向左点击事件
     aryleft.onclick = function(){
-    	if(!isAnimationHas){	
-      	toLast()
-    	}
+      if(!isAnimationHas){  
+        toLast()
+      }
     }
     // 创建小圆点
     for (var i = 0; i < count; i++){
@@ -229,6 +229,6 @@
         toNext()
       },3000)
     }
-	</script>
+  </script>
 </body>
 </html>
